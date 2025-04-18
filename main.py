@@ -1,7 +1,7 @@
-
 from fastapi import FastAPI
 from pydantic import BaseModel
 import subprocess
+import uvicorn  # Importa o Uvicorn para rodar o servidor FastAPI
 
 app = FastAPI()
 
@@ -22,3 +22,7 @@ def generate_video(request: TextRequest):
 @app.get("/")
 def read_root():
     return {"message": "Welcome to DreamClip.AI API!"}
+
+if __name__ == "__main__":
+    # Adiciona a configuração para o Uvicorn rodar na porta 10000
+    uvicorn.run(app, host="0.0.0.0", port=10000)
